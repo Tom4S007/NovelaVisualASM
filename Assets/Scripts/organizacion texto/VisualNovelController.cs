@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class VisualNovelController : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class VisualNovelController : MonoBehaviour
     [Header("Guion")]
     [SerializeField] private DialogueLine[] lines;
     [SerializeField] private string firstLineId = "p1";
+    [Header("Extras Cap 3")]
+    [SerializeField] private Image background;
+    [SerializeField] private string nextSceneName;
+    [SerializeField] private CapsuleView capsuleView;
 
     private Dictionary<string, DialogueLine> lineMap;
     private DialogueLine currentLine;
@@ -66,6 +71,12 @@ public class VisualNovelController : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(id))
         {
+            if (!string.IsNullOrWhiteSpace(nextSceneName))
+            {
+                SceneManager.LoadScene(nextSceneName);
+                return;
+            }
+
             Debug.Log("Fin de esta secuencia narrativa.");
             speakerName.text = "";
             dialogueText.text = "Fin de la escena.";
@@ -79,6 +90,35 @@ public class VisualNovelController : MonoBehaviour
             Debug.LogError("No existe la línea: " + id);
             return;
         }
+
+        if (currentLine.isRouter)
+        {
+            string destino = EvaluarCondicion(currentLine)
+                ? currentLine.nextLineIfTrue
+                : currentLine.nextLineId;
+            ShowLine(destino);
+            return;
+        }
+
+        GameState.Sumar(ref GameState.RIESGO, currentLine.onEnterRiesgo);
+
+        if (background != null && currentLine.background != null)
+            background.sprite = currentLine.background;
+
+        if (currentLine.isCapsule && capsuleView != null)
+        {
+            speakerName.text = GetSpeakerName(currentLine.character);
+            dialogueText.text = currentLine.text;
+            choicesPanel.SetActive(false);
+            continueButton.gameObject.SetActive(false);
+
+            string siguiente = currentLine.nextLineId;
+            capsuleView.Show(currentLine.capsuleWords,
+                             currentLine.capsulePick,
+                             () => ShowLine(siguiente));
+            return;
+        }
+
 
         speakerName.text = GetSpeakerName(currentLine.character);
         dialogueText.text = currentLine.text;
@@ -161,11 +201,8 @@ public class VisualNovelController : MonoBehaviour
             return;
         }
 
-        SetButtonText(choiceA, currentLine.choices[0].text);
-        SetButtonText(choiceB, currentLine.choices[1].text);
-
-        choiceA.interactable = true;
-        choiceB.interactable = true;
+        ConfigurarBoton(choiceA, currentLine.choices[0]);
+        ConfigurarBoton(choiceB, currentLine.choices[1]);
     }
 
     private void SetButtonText(Button button, string text)
@@ -189,6 +226,9 @@ public class VisualNovelController : MonoBehaviour
         GameState.Sumar(ref GameState.INFO, choice.info);
         GameState.Sumar(ref GameState.CONF, choice.conf);
         GameState.Sumar(ref GameState.RIESGO, choice.riesgo);
+        GameState.Sumar(ref GameState.cSebas, choice.cSebas);
+        GameState.Sumar(ref GameState.cCamila, choice.cCamila);
+        GameState.Sumar(ref GameState.cChela, choice.cChela);
 
         if (choice.emitRumor)
             GameState.rumorEmitido = true;
@@ -216,8 +256,42 @@ public class VisualNovelController : MonoBehaviour
             $"PREP={GameState.PREP}, " +
             $"INFO={GameState.INFO}, " +
             $"CONF={GameState.CONF}, " +
-            $"RIESGO={GameState.RIESGO}");
+            $"RIESGO={GameState.RIESGO} | " +
+            $"arriesgo={GameState.arriesgo}, panico={GameState.panico}, " +
+            $"cSebas={GameState.cSebas}, cCamila={GameState.cCamila}, cChela={GameState.cChela}");
 
         ShowLine(choice.nextLineId);
     }
+
+    private void ConfigurarBoton(Button boton, ChoiceData opcion)
+    {
+        bool bloqueada = opcion.requiresLibreta && !GameState.tieneLibreta;
+
+        string textoBoton = bloqueada && !string.IsNullOrEmpty(opcion.lockedHint)
+            ? opcion.lockedHint
+            : opcion.text;
+
+        SetButtonText(boton, textoBoton);
+        boton.interactable = !bloqueada;
+    }
+
+    private bool EvaluarCondicion(DialogueLine linea)
+    {
+        switch (linea.condition)
+        {
+            case RouterCondition.PrepMayorOIgual:
+                return GameState.PREP >= linea.conditionValue;
+            case RouterCondition.Panico:
+                return GameState.panico;
+            case RouterCondition.TieneLibreta:
+                return GameState.tieneLibreta;
+            case RouterCondition.SinReservaAgua:
+                return !GameState.reservaAgua;
+            case RouterCondition.Arriesgo:
+                return GameState.arriesgo;
+            default:
+                return false;
+        }
+    }
+
 }
