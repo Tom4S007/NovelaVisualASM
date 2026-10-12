@@ -367,10 +367,10 @@ RectTransform:
   - {fileID: 738117358}
   m_Father: {fileID: 708572546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -296.25}
+  m_SizeDelta: {x: 860, y: 52.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &150564896
 MonoBehaviour:
@@ -799,10 +799,10 @@ RectTransform:
   - {fileID: 2055544654}
   m_Father: {fileID: 708572546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -46.25}
+  m_SizeDelta: {x: 860, y: 52.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557889448
 MonoBehaviour:
@@ -1062,7 +1062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &708572546
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1211,10 +1211,10 @@ RectTransform:
   - {fileID: 1956001231}
   m_Father: {fileID: 708572546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -403.75}
+  m_SizeDelta: {x: 860, y: 52.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &715304208
 MonoBehaviour:
@@ -2464,6 +2464,183 @@ MonoBehaviour:
     character: 0
     text: "La creciente baja poco a poco. Llega la madrugada.\t"
     expression: {fileID: 0}
+    nextLineId: c3_22
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
+  - id: c3_22
+    character: 0
+    text: "Amanecer en Radio Ladera. Luc\xEDa debe grabar un \xFAltimo aviso para
+      el barrio.\t"
+    expression: {fileID: 0}
+    nextLineId: c3_23
+    hasChoices: 0
+    choices: []
+    background: {fileID: -4645550182675060413, guid: 52eaaaff4d6923e4d80d580b9b5e7635, type: 3}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
+  - id: c3_23
+    character: 1
+    text: "\xBFQu\xE9 le digo al barrio ahora? Elijo tres frases.\t"
+    expression: {fileID: 0}
+    nextLineId: c3_24r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 1
+    capsulePick: 3
+    capsuleWords:
+    - text: No regresar hasta que las autoridades lo permitan
+      correct: 1
+      likes: 3
+    - text: "No tocar cables ca\xEDdos y reportarlos"
+      correct: 1
+      likes: 2
+    - text: Usar agua hervida o de la reserva y lavarse las manos
+      correct: 1
+      likes: 4
+    - text: Volver ya por las cosas
+      correct: 0
+      likes: 4
+    - text: "Limpiar el lodo con ni\xF1os presentes"
+      correct: 0
+      likes: 2
+  - id: c3_24r
+    character: 0
+    text: "\t"
+    expression: {fileID: 0}
+    nextLineId: c3_25r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 1
+    condition: 4
+    conditionValue: 0
+    nextLineIfTrue: c3_24a
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
+  - id: c3_24a
+    character: 0
+    text: Sin reserva de agua, el barrio tarda en conseguir agua limpia.
+    expression: {fileID: 0}
+    nextLineId: c3_25r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 1
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
+  - id: c3_25r
+    character: 0
+    text: "\t"
+    expression: {fileID: 0}
+    nextLineId: c3_26b
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 1
+    condition: 3
+    conditionValue: 0
+    nextLineIfTrue: c3_26a
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
+  - id: c3_26a
+    character: 5
+    text: "Yo dej\xE9 los mensajes, Luc\xEDa. Hace a\xF1os vi las se\xF1ales y no
+      me atrev\xED a avisar.\t"
+    expression: {fileID: 0}
+    nextLineId: c3_26a2
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
+  - id: c3_26a2
+    character: 5
+    text: "No volv\xED a callar."
+    expression: {fileID: 0}
+    nextLineId: c3_27
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
+  - id: c3_26b
+    character: 6
+    text: "Los r\xEDos hablan antes de que la ciudad escuche."
+    expression: {fileID: 0}
+    nextLineId: c3_26b2
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
+  - id: c3_26b2
+    character: 0
+    text: "La voz se apaga. Nadie sabe de d\xF3nde ven\xEDa."
+    expression: {fileID: 0}
+    nextLineId: c3_27
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
+  - id: c3_27
+    character: 0
+    text: "La se\xF1al queda limpia. Por hoy, termina la transmisi\xF3n.\t"
+    expression: {fileID: 0}
     nextLineId: 
     hasChoices: 0
     choices: []
@@ -2551,10 +2728,10 @@ RectTransform:
   - {fileID: 75628090}
   m_Father: {fileID: 708572546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -108.75}
+  m_SizeDelta: {x: 860, y: 52.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900407570
 MonoBehaviour:
@@ -2691,10 +2868,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 708572546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -350}
+  m_SizeDelta: {x: 860, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1159059037
 MonoBehaviour:
@@ -2988,10 +3165,10 @@ RectTransform:
   - {fileID: 166248738}
   m_Father: {fileID: 708572546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -171.25}
+  m_SizeDelta: {x: 860, y: 52.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255287172
 MonoBehaviour:
@@ -3359,10 +3536,10 @@ RectTransform:
   - {fileID: 1216398259}
   m_Father: {fileID: 708572546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -233.75}
+  m_SizeDelta: {x: 860, y: 52.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1425845503
 MonoBehaviour:
