@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +15,12 @@ public class MarkerInfo : MonoBehaviour
 
     [TextArea(2, 4)]
     public string fuente;
+
+    [Header("Tipo de marcador")]
+    public bool esCapitulo;
+
+    [Header("Escena del capítulo")]
+    public string escenaCapitulo;
 
     [Header("Controlador de la tarjeta")]
     public MarkerInfoCardController cardController;
@@ -48,7 +53,7 @@ public class MarkerInfo : MonoBehaviour
         else
         {
             Debug.LogWarning(
-                "Falta asignar el controlador de la tarjeta en "
+                "Falta asignar MarkerInfoCardController en "
                 + gameObject.name
             );
         }
