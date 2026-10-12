@@ -12,6 +12,17 @@ public enum CharacterId
     Fuente7
 }
 
+public enum RouterCondition
+{
+    Ninguna,
+    PrepMayorOIgual,
+    Panico,
+    TieneLibreta,
+    SinReservaAgua,
+    Arriesgo
+}
+
+
 [Serializable]
 public class DialogueLine
 {
@@ -26,6 +37,22 @@ public class DialogueLine
     public string nextLineId;
     public bool hasChoices;
     public ChoiceData[] choices;
+
+    [Header("Extras Cap 3")]
+    public Sprite background;          // cambia el fondo al mostrar esta línea
+    public int onEnterRiesgo;          // suma/resta RIESGO al entrar a la línea
+
+    [Header("Salto condicional (línea invisible)")]
+    public bool isRouter;
+    public RouterCondition condition;
+    public int conditionValue;
+    public string nextLineIfTrue;
+
+    [Header("Cápsula radial")]
+    public bool isCapsule;
+    public int capsulePick = 3;
+    public CapsuleWord[] capsuleWords;
+
 }
 
 [Serializable]
@@ -46,4 +73,22 @@ public class ChoiceData
     public bool setSubioAApagar;
     public bool setPanico;
     public bool setArriesgo;
+
+
+    public int cSebas;
+    public int cCamila;
+    public int cChela;
+
+    public bool requiresLibreta;
+    public string lockedHint;
+
+
+}
+
+[Serializable]
+public class CapsuleWord
+{
+    public string text;
+    public bool correct;
+    public CharacterId likes;   // a quién "le gusta" esta palabra
 }
