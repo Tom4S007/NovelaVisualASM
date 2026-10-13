@@ -668,14 +668,14 @@ RectTransform:
   m_GameObject: {fileID: 792571314}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1260859512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -3}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &792571316
@@ -1066,8 +1066,8 @@ RectTransform:
   m_GameObject: {fileID: 1260859511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 792571315}
   m_Father: {fileID: 1605731941}
@@ -1075,7 +1075,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -411, y: -100}
-  m_SizeDelta: {x: 500, y: 50}
+  m_SizeDelta: {x: 550, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1260859513
 MonoBehaviour:
@@ -1097,8 +1097,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -5256424462040999547, guid: a206ec2fe06c4654ca1cc25d494a2f9b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1196,7 +1196,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 631, y: -468}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1307648507
 MonoBehaviour:
@@ -1218,8 +1218,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1689614814278364083, guid: 383dff19b77d7264ca7741c482b654a3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1363,8 +1363,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1689614814278364083, guid: 383dff19b77d7264ca7741c482b654a3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1390,8 +1390,8 @@ RectTransform:
   m_GameObject: {fileID: 1392455190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1991340539}
   m_Father: {fileID: 1605731941}
@@ -1399,7 +1399,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 434, y: -100}
-  m_SizeDelta: {x: 500, y: 50}
+  m_SizeDelta: {x: 550, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1474323328
 GameObject:
@@ -1662,7 +1662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683509297
@@ -1714,8 +1714,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1813,6 +1813,15 @@ MonoBehaviour:
     nextLineId: p2
     hasChoices: 0
     choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
   - id: p2
     character: 2
     text: "\xA1Tres, dos, uno\u2026 al aire, t\xEDa!"
@@ -1820,6 +1829,15 @@ MonoBehaviour:
     nextLineId: p3
     hasChoices: 0
     choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
   - id: p3
     character: 1
     text: "Buenos d\xEDas, Cali. Aqu\xED Radio Ladera."
@@ -1827,6 +1845,15 @@ MonoBehaviour:
     nextLineId: p4
     hasChoices: 0
     choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
   - id: p4
     character: 4
     text: "\xA1Ay, mija! Me dijeron que ma\xF1ana cortan el agua una semana."
@@ -1834,6 +1861,15 @@ MonoBehaviour:
     nextLineId: p5
     hasChoices: 0
     choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
   - id: p5
     character: 6
     text: "Los r\xEDos hablan antes de que la ciudad escuche."
@@ -1841,6 +1877,15 @@ MonoBehaviour:
     nextLineId: d0
     hasChoices: 0
     choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
   - id: d0
     character: 1
     text: "\xBFQu\xE9 hacemos con el rumor del agua?"
@@ -1861,6 +1906,11 @@ MonoBehaviour:
       setSubioAApagar: 0
       setPanico: 0
       setArriesgo: 0
+      cSebas: 0
+      cCamila: 0
+      cChela: 0
+      requiresLibreta: 0
+      lockedHint: 
     - text: Verificar primero
       nextLineId: d0_b
       prep: 1
@@ -1874,6 +1924,20 @@ MonoBehaviour:
       setSubioAApagar: 0
       setPanico: 0
       setArriesgo: 0
+      cSebas: 0
+      cCamila: 0
+      cChela: 0
+      requiresLibreta: 0
+      lockedHint: 
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
   - id: d0_a
     character: 1
     text: <<Lees el rumor al aire. Las llamadas aumentan y algunos vecinos se preocupan.>>
@@ -1881,6 +1945,15 @@ MonoBehaviour:
     nextLineId: d0_fin
     hasChoices: 0
     choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
   - id: d0_b
     character: 3
     text: "No hay anuncio confirmado todav\xEDa. Es importante verificar antes de
@@ -1889,6 +1962,15 @@ MonoBehaviour:
     nextLineId: d0_fin
     hasChoices: 0
     choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
   - id: d0_fin
     character: 1
     text: "La transmisi\xF3n contin\xFAa. Las decisiones de hoy tendr\xE1n consecuencias
@@ -1897,7 +1979,23 @@ MonoBehaviour:
     nextLineId: 
     hasChoices: 0
     choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 3
+    capsuleWords: []
   firstLineId: p1
+  background: {fileID: 0}
+  nextSceneName: 
+  capsuleView: {fileID: 0}
+  nombreEscenaMapa: 01_MapaCali
+  mensajeFinal: "La historia contin\xFAa en Cali. Vamos al mapa para explorar los
+    cap\xEDtulos y descubrir qu\xE9 sucede en cada lugar."
+  textoBotonMapa: IR AL MAPA
 --- !u!4 &1839546259
 Transform:
   m_ObjectHideFlags: 0
@@ -1940,8 +2038,8 @@ RectTransform:
   m_GameObject: {fileID: 1991340538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1392455194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
