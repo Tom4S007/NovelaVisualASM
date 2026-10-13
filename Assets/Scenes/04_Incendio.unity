@@ -223,22 +223,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 187337929}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef26a4d64a47904f87841db6bd77c33, type: 3}
+  m_Script: {fileID: 11500000, guid: b782590cf39c23a4da2b7830b9609edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Capitulo2VisualNovelController
   firstLineId: c2_01
   lines: []
   speakerName: {fileID: 1897221222}
-  dialogueText: {fileID: 0}
+  dialogueText: {fileID: 2020668227}
   background: {fileID: 1993637528}
   characterLeft: {fileID: 762923280}
   characterRight: {fileID: 1382830845}
   continueButton: {fileID: 660832164}
   choicesPanel: {fileID: 77118366}
-  choiceA: {fileID: 1872660914}
-  choiceB: {fileID: 1564304175}
-  choiceC: {fileID: 1401642225}
-  capsuleView: {fileID: 0}
+  opcionesBotones:
+  - {fileID: 1872660914}
+  - {fileID: 1564304175}
+  - {fileID: 1401642225}
   sfxSource: {fileID: 0}
   ambientSource: {fileID: 0}
   glitchSound: {fileID: 0}
