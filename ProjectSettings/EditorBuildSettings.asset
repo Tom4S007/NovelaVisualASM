@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TextoPruebas.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/05_Lluvias.unity
+    guid: e907dfcaad2fff94982f9718e2d0d452
+  - enabled: 1
     path: Assets/Scenes/03_Sequia.unity
     guid: ed82978308a02ff479c60c5842dab066
   - enabled: 1

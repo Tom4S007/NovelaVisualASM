@@ -5,6 +5,14 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+
+[System.Serializable]
+public class CharacterPortrait
+{
+    public CharacterId character;
+    public Sprite defaultSprite;
+}
+
 public class VisualNovelController : MonoBehaviour
 {
     [Header("Textos")]
@@ -29,6 +37,9 @@ public class VisualNovelController : MonoBehaviour
     [SerializeField] private Image background;
     [SerializeField] private string nextSceneName;
     [SerializeField] private CapsuleView capsuleView;
+
+    [Header("Retratos por defecto")]
+    [SerializeField] private CharacterPortrait[] portraits;
 
     [Header("Final de la escena")]
     [SerializeField] private string nombreEscenaMapa = "01_MapaCali";
@@ -231,7 +242,11 @@ public class VisualNovelController : MonoBehaviour
         if (characterRight != null)
             characterRight.gameObject.SetActive(false);
 
-        if (line.expression == null)
+        Sprite sprite = line.expression != null
+        ? line.expression
+        : GetDefaultPortrait(line.character);
+
+        if (sprite == null)
             return;
 
         Image target = null;
@@ -252,11 +267,27 @@ public class VisualNovelController : MonoBehaviour
 
         if (target != null)
         {
-            target.sprite = line.expression;
+            target.sprite = sprite;
             target.preserveAspect = true;
             target.gameObject.SetActive(true);
         }
     }
+
+
+    private Sprite GetDefaultPortrait(CharacterId character)
+    {
+        if (portraits == null) return null;
+
+        foreach (CharacterPortrait p in portraits)
+        {
+            if (p.character == character)
+                return p.defaultSprite;
+        }
+
+        return null;
+    }
+
+
 
     private void ContinueDialogue()
     {
