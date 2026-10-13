@@ -24,13 +24,22 @@ public class VisualNovelController : MonoBehaviour
     [Header("Guion")]
     [SerializeField] private DialogueLine[] lines;
     [SerializeField] private string firstLineId = "p1";
+
     [Header("Extras Cap 3")]
     [SerializeField] private Image background;
     [SerializeField] private string nextSceneName;
     [SerializeField] private CapsuleView capsuleView;
 
+    [Header("Final de la escena")]
+    [SerializeField] private string nombreEscenaMapa = "01_MapaCali";
+    [SerializeField]
+    private string mensajeFinal =
+        "La historia continúa en Cali. Vamos al mapa para explorar los capítulos y descubrir qué sucede en cada lugar.";
+    [SerializeField] private string textoBotonMapa = "IR AL MAPA";
+
     private Dictionary<string, DialogueLine> lineMap;
     private DialogueLine currentLine;
+    private bool mostrandoFinal;
 
     private void Start()
     {
@@ -52,11 +61,17 @@ public class VisualNovelController : MonoBehaviour
             }
         }
 
-        continueButton.onClick.AddListener(ContinueDialogue);
-        choiceA.onClick.AddListener(() => SelectChoice(0));
-        choiceB.onClick.AddListener(() => SelectChoice(1));
+        if (continueButton != null)
+            continueButton.onClick.AddListener(ContinueDialogue);
 
-        choicesPanel.SetActive(false);
+        if (choiceA != null)
+            choiceA.onClick.AddListener(() => SelectChoice(0));
+
+        if (choiceB != null)
+            choiceB.onClick.AddListener(() => SelectChoice(1));
+
+        if (choicesPanel != null)
+            choicesPanel.SetActive(false);
 
         if (characterLeft != null)
             characterLeft.gameObject.SetActive(false);
@@ -64,24 +79,18 @@ public class VisualNovelController : MonoBehaviour
         if (characterRight != null)
             characterRight.gameObject.SetActive(false);
 
+        if (continueButton != null)
+            continueButton.gameObject.SetActive(true);
+
         ShowLine(firstLineId);
     }
 
     private void ShowLine(string id)
     {
+        // Si no hay otra línea, mostrar la invitación a ir al mapa.
         if (string.IsNullOrWhiteSpace(id))
         {
-            if (!string.IsNullOrWhiteSpace(nextSceneName))
-            {
-                SceneManager.LoadScene(nextSceneName);
-                return;
-            }
-
-            Debug.Log("Fin de esta secuencia narrativa.");
-            speakerName.text = "";
-            dialogueText.text = "Fin de la escena.";
-            continueButton.gameObject.SetActive(false);
-            choicesPanel.SetActive(false);
+            MostrarFinalEscena();
             return;
         }
 
@@ -91,58 +100,126 @@ public class VisualNovelController : MonoBehaviour
             return;
         }
 
+        // Las líneas router son invisibles y solo evalúan condiciones.
         if (currentLine.isRouter)
         {
             string destino = EvaluarCondicion(currentLine)
                 ? currentLine.nextLineIfTrue
                 : currentLine.nextLineId;
+
             ShowLine(destino);
             return;
         }
 
-        GameState.Sumar(ref GameState.RIESGO, currentLine.onEnterRiesgo);
+        GameState.Sumar(
+            ref GameState.RIESGO,
+            currentLine.onEnterRiesgo
+        );
 
         if (background != null && currentLine.background != null)
             background.sprite = currentLine.background;
 
         if (currentLine.isCapsule && capsuleView != null)
         {
-            speakerName.text = GetSpeakerName(currentLine.character);
-            dialogueText.text = currentLine.text;
-            choicesPanel.SetActive(false);
-            continueButton.gameObject.SetActive(false);
+            if (speakerName != null)
+                speakerName.text = GetSpeakerName(currentLine.character);
+
+            if (dialogueText != null)
+                dialogueText.text = currentLine.text;
+
+            if (choicesPanel != null)
+                choicesPanel.SetActive(false);
+
+            if (continueButton != null)
+                continueButton.gameObject.SetActive(false);
 
             string siguiente = currentLine.nextLineId;
-            capsuleView.Show(currentLine.capsuleWords,
-                             currentLine.capsulePick,
-                             () => ShowLine(siguiente));
+
+            capsuleView.Show(
+                currentLine.capsuleWords,
+                currentLine.capsulePick,
+                () => ShowLine(siguiente)
+            );
+
             return;
         }
 
+        if (speakerName != null)
+            speakerName.text = GetSpeakerName(currentLine.character);
 
-        speakerName.text = GetSpeakerName(currentLine.character);
-        dialogueText.text = currentLine.text;
+        if (dialogueText != null)
+            dialogueText.text = currentLine.text;
 
         ShowCharacter(currentLine);
 
-        choicesPanel.SetActive(currentLine.hasChoices);
-        continueButton.gameObject.SetActive(!currentLine.hasChoices);
+        if (choicesPanel != null)
+            choicesPanel.SetActive(currentLine.hasChoices);
+
+        if (continueButton != null)
+            continueButton.gameObject.SetActive(!currentLine.hasChoices);
 
         if (currentLine.hasChoices)
             ConfigureChoices();
+    }
+
+    private void MostrarFinalEscena()
+    {
+        mostrandoFinal = true;
+        currentLine = null;
+
+        if (speakerName != null)
+            speakerName.text = "Narrador";
+
+        if (dialogueText != null)
+            dialogueText.text = mensajeFinal;
+
+        if (choicesPanel != null)
+            choicesPanel.SetActive(false);
+
+        if (characterLeft != null)
+            characterLeft.gameObject.SetActive(false);
+
+        if (characterRight != null)
+            characterRight.gameObject.SetActive(false);
+
+        if (continueButton != null)
+        {
+            continueButton.gameObject.SetActive(true);
+
+            TMP_Text etiqueta =
+                continueButton.GetComponentInChildren<TMP_Text>();
+
+            if (etiqueta != null)
+                etiqueta.text = textoBotonMapa;
+        }
+
+        Debug.Log("Secuencia narrativa terminada. Esperando para ir al mapa.");
     }
 
     private string GetSpeakerName(CharacterId character)
     {
         switch (character)
         {
-            case CharacterId.Lucia: return GameState.nombreJugador;
-            case CharacterId.Sebas: return "Sebas";
-            case CharacterId.Camila: return "Camila";
-            case CharacterId.Chela: return "Doña Chela (teléfono)";
-            case CharacterId.DonHernan: return "Don Hernán";
-            case CharacterId.Fuente7: return "Fuente 7";
-            default: return "Narrador";
+            case CharacterId.Lucia:
+                return GameState.nombreJugador;
+
+            case CharacterId.Sebas:
+                return "Sebas";
+
+            case CharacterId.Camila:
+                return "Camila";
+
+            case CharacterId.Chela:
+                return "Doña Chela (teléfono)";
+
+            case CharacterId.DonHernan:
+                return "Don Hernán";
+
+            case CharacterId.Fuente7:
+                return "Fuente 7";
+
+            default:
+                return "Narrador";
         }
     }
 
@@ -183,10 +260,38 @@ public class VisualNovelController : MonoBehaviour
 
     private void ContinueDialogue()
     {
+        // El botón final ahora lleva al mapa.
+        if (mostrandoFinal)
+        {
+            IrAlMapa();
+            return;
+        }
+
         if (currentLine == null || currentLine.hasChoices)
             return;
 
         ShowLine(currentLine.nextLineId);
+    }
+
+    private void IrAlMapa()
+    {
+        // Si hay un nombre de escena configurado en el Inspector,
+        // se usa ese; de lo contrario, se usa el mapa de Cali.
+        string escenaDestino = !string.IsNullOrWhiteSpace(nextSceneName)
+            ? nextSceneName
+            : nombreEscenaMapa;
+
+        if (Application.CanStreamedLevelBeLoaded(escenaDestino))
+        {
+            SceneManager.LoadScene(escenaDestino);
+        }
+        else
+        {
+            Debug.LogError(
+                "No se puede cargar la escena '" + escenaDestino +
+                "'. Comprueba su nombre y que esté incluida en Build Profiles."
+            );
+        }
     }
 
     private void ConfigureChoices()
@@ -196,8 +301,13 @@ public class VisualNovelController : MonoBehaviour
         {
             Debug.LogError(
                 "La decisión necesita al menos dos opciones.");
-            choicesPanel.SetActive(false);
-            continueButton.gameObject.SetActive(true);
+
+            if (choicesPanel != null)
+                choicesPanel.SetActive(false);
+
+            if (continueButton != null)
+                continueButton.gameObject.SetActive(true);
+
             return;
         }
 
@@ -207,6 +317,9 @@ public class VisualNovelController : MonoBehaviour
 
     private void SetButtonText(Button button, string text)
     {
+        if (button == null)
+            return;
+
         TMP_Text label = button.GetComponentInChildren<TMP_Text>();
 
         if (label != null)
@@ -217,6 +330,7 @@ public class VisualNovelController : MonoBehaviour
     {
         if (currentLine == null ||
             currentLine.choices == null ||
+            index < 0 ||
             index >= currentLine.choices.Length)
             return;
 
@@ -226,6 +340,7 @@ public class VisualNovelController : MonoBehaviour
         GameState.Sumar(ref GameState.INFO, choice.info);
         GameState.Sumar(ref GameState.CONF, choice.conf);
         GameState.Sumar(ref GameState.RIESGO, choice.riesgo);
+
         GameState.Sumar(ref GameState.cSebas, choice.cSebas);
         GameState.Sumar(ref GameState.cCamila, choice.cCamila);
         GameState.Sumar(ref GameState.cChela, choice.cChela);
@@ -251,25 +366,37 @@ public class VisualNovelController : MonoBehaviour
         if (choice.setArriesgo)
             GameState.arriesgo = true;
 
+        // Persistir los indicadores después de tomar la decisión.
+        GameSaveSystem.SaveGameState();
+
         Debug.Log(
             $"Elección: {choice.text} | " +
             $"PREP={GameState.PREP}, " +
             $"INFO={GameState.INFO}, " +
             $"CONF={GameState.CONF}, " +
             $"RIESGO={GameState.RIESGO} | " +
-            $"arriesgo={GameState.arriesgo}, panico={GameState.panico}, " +
-            $"cSebas={GameState.cSebas}, cCamila={GameState.cCamila}, cChela={GameState.cChela}");
+            $"arriesgo={GameState.arriesgo}, " +
+            $"panico={GameState.panico}, " +
+            $"cSebas={GameState.cSebas}, " +
+            $"cCamila={GameState.cCamila}, " +
+            $"cChela={GameState.cChela}"
+        );
 
         ShowLine(choice.nextLineId);
     }
 
     private void ConfigurarBoton(Button boton, ChoiceData opcion)
     {
-        bool bloqueada = opcion.requiresLibreta && !GameState.tieneLibreta;
+        if (boton == null || opcion == null)
+            return;
 
-        string textoBoton = bloqueada && !string.IsNullOrEmpty(opcion.lockedHint)
-            ? opcion.lockedHint
-            : opcion.text;
+        bool bloqueada =
+            opcion.requiresLibreta && !GameState.tieneLibreta;
+
+        string textoBoton =
+            bloqueada && !string.IsNullOrEmpty(opcion.lockedHint)
+                ? opcion.lockedHint
+                : opcion.text;
 
         SetButtonText(boton, textoBoton);
         boton.interactable = !bloqueada;
@@ -281,17 +408,33 @@ public class VisualNovelController : MonoBehaviour
         {
             case RouterCondition.PrepMayorOIgual:
                 return GameState.PREP >= linea.conditionValue;
+
             case RouterCondition.Panico:
                 return GameState.panico;
+
             case RouterCondition.TieneLibreta:
                 return GameState.tieneLibreta;
+
             case RouterCondition.SinReservaAgua:
                 return !GameState.reservaAgua;
+
             case RouterCondition.Arriesgo:
                 return GameState.arriesgo;
+
             default:
                 return false;
         }
     }
 
+    private void OnDestroy()
+    {
+        if (continueButton != null)
+            continueButton.onClick.RemoveListener(ContinueDialogue);
+
+        if (choiceA != null)
+            choiceA.onClick.RemoveAllListeners();
+
+        if (choiceB != null)
+            choiceB.onClick.RemoveAllListeners();
+    }
 }
