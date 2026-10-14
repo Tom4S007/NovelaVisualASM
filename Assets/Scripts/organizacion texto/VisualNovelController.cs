@@ -107,7 +107,7 @@ public class VisualNovelController : MonoBehaviour
 
         if (!lineMap.TryGetValue(id, out currentLine))
         {
-            Debug.LogError("No existe la l�nea: " + id);
+            Debug.LogError("No existe la línea: [" + id + "]");
             return;
         }
 
@@ -452,6 +452,29 @@ public class VisualNovelController : MonoBehaviour
             case RouterCondition.Arriesgo:
                 return GameState.arriesgo;
 
+
+            case RouterCondition.IRMayorOIgual:
+                return CalcularIR() >= linea.conditionValue;
+
+            case RouterCondition.IRMenorQue:
+                return CalcularIR() < linea.conditionValue;
+
+            case RouterCondition.ArriesgoYRiesgoAlto:
+                return GameState.arriesgo &&
+                       GameState.RIESGO >= linea.conditionValue;
+
+            case RouterCondition.RumorEmitido:
+                return GameState.rumorEmitido;
+
+            case RouterCondition.FranjaLimpia:
+                return GameState.franjaLimpia;
+
+            case RouterCondition.SubioAApagar:
+                return GameState.subioAApagar;
+
+            case RouterCondition.ReservaAgua:
+                return GameState.reservaAgua;
+
             default:
                 return false;
         }
@@ -468,4 +491,12 @@ public class VisualNovelController : MonoBehaviour
         if (choiceB != null)
             choiceB.onClick.RemoveAllListeners();
     }
+
+
+    private int CalcularIR()
+    {
+        return GameState.PREP + GameState.INFO + GameState.CONF - GameState.RIESGO;
+    }
+
+
 }

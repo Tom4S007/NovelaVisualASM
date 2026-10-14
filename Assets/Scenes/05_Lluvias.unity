@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.81368273, b: 0.33018857, a: 0.81960785}
+  m_Color: {r: 0.8784314, g: 0.15686275, b: 0.039215688, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -456,8 +456,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 47433049107537678, guid: 7936aef6a921eac49bd98bb950517a98, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -888,8 +888,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 47433049107537678, guid: 7936aef6a921eac49bd98bb950517a98, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+  m_Color: {r: 0.8784314, g: 0.15686275, b: 0.039215688, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1300,8 +1300,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 47433049107537678, guid: 7936aef6a921eac49bd98bb950517a98, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2655,7 +2655,7 @@ MonoBehaviour:
     capsuleWords: []
   firstLineId: c3_1
   background: {fileID: 844197539}
-  nextSceneName: 
+  nextSceneName: 06_Final
   capsuleView: {fileID: 708572550}
   portraits:
   - character: 1
@@ -2666,10 +2666,9 @@ MonoBehaviour:
     defaultSprite: {fileID: -3407390292736649292, guid: ddd0d5bb8ca837f458a885e55ba5383b, type: 3}
   - character: 5
     defaultSprite: {fileID: 8536947578399586757, guid: e41c3147fb3540f4d87f4189b46669f7, type: 3}
-  nombreEscenaMapa: 01_MapaCali
-  mensajeFinal: "La historia contin\xFAa en Cali. Vamos al mapa para explorar los
-    cap\xEDtulos y descubrir qu\xE9 sucede en cada lugar."
-  textoBotonMapa: IR AL MAPA
+  nombreEscenaMapa: 06_Final
+  mensajeFinal: "Termina la transmisi\xF3n del cap\xEDtulo 3."
+  textoBotonMapa: VER EL FINAL
 --- !u!4 &874378687
 Transform:
   m_ObjectHideFlags: 0
@@ -2830,8 +2829,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 47433049107537678, guid: 7936aef6a921eac49bd98bb950517a98, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3267,8 +3266,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 47433049107537678, guid: 7936aef6a921eac49bd98bb950517a98, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3638,8 +3637,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 47433049107537678, guid: 7936aef6a921eac49bd98bb950517a98, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
