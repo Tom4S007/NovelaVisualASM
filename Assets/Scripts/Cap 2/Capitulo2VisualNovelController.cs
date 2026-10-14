@@ -26,6 +26,13 @@ public class Capitulo2VisualNovelController : MonoBehaviour
     [Tooltip("Botones del panel de opciones (de 2 a 5). Sirven para las decisiones y para la cápsula.")]
     [SerializeField] private Button[] opcionesBotones;
 
+    [Header("Cápsula radial (panel)")]
+    [SerializeField] private GameObject capsulaPanel;
+    [SerializeField] private Button[] palabrasBotones;
+    [SerializeField] private TMP_Text contadorCapsula;
+    [SerializeField] private Button confirmarCapsula;
+    [SerializeField] private Color colorSeleccion = Color.yellow;
+
     [Header("Sonido")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource ambientSource;
@@ -41,10 +48,8 @@ public class Capitulo2VisualNovelController : MonoBehaviour
 
     // Estado de la cápsula radial.
     private Cap2Linea capsulaLinea;
-    private List<int> capsulaDisponibles;
-    private int capsulaRonda;
+    private bool[] capsulaElegidas;
     private int capsulaPick;
-    private bool esperandoReaccion;
 
     private void Start()
     {
@@ -92,6 +97,8 @@ public class Capitulo2VisualNovelController : MonoBehaviour
 
         if (continueButton != null)
             continueButton.gameObject.SetActive(true);
+
+        PrepararPanelCapsula();
 
         ShowLine(firstLineId);
     }
@@ -180,14 +187,6 @@ public class Capitulo2VisualNovelController : MonoBehaviour
 
     private void ContinueDialogue()
     {
-        // Durante la cápsula, el botón solo sirve para pasar la reacción.
-        if (capsulaLinea != null)
-        {
-            if (esperandoReaccion)
-                AvanzarCapsula();
-
-            return;
-        }
 
         if (currentLine == null)
             return;
@@ -234,12 +233,6 @@ public class Capitulo2VisualNovelController : MonoBehaviour
 
     private void SelectChoice(int index)
     {
-        // Si hay una cápsula en marcha, el botón elige una palabra.
-        if (capsulaLinea != null)
-        {
-            ElegirPalabra(index);
-            return;
-        }
 
         if (currentLine == null ||
             currentLine.opciones == null ||
@@ -281,145 +274,145 @@ public class Capitulo2VisualNovelController : MonoBehaviour
         ShowLine(op.siguienteLinea);
     }
 
-    // CÁPSULA RADIAL (las palabras salen como opciones, de una en una)
+    // CÁPSULA RADIAL (panel sencillo: elegir, quitar y confirmar)
 
-    private void IniciarCapsula(Cap2Linea line)
+private void IniciarCapsula(Cap2Linea line)
     {
-        if (line.palabras == null || line.palabras.Length < 2)
+        if (capsulaPanel == null || palabrasBotones == null || line.palabras == null)
         {
-            Debug.LogError("La cápsula '" + line.id + "' necesita al menos 2 palabras.");
+            Debug.LogError("Falta el panel de la cápsula o las palabras de '" + line.id + "'.");
             ShowLine(line.siguienteLinea);
             return;
         }
 
         capsulaLinea = line;
-        capsulaPick = Mathf.Clamp(line.palabrasAElegir, 1, line.palabras.Length);
-        capsulaRonda = 0;
-        esperandoReaccion = false;
+        capsulaPick = line.palabrasAElegir;
+        capsulaElegidas = new bool[palabrasBotones.Length];
 
-        capsulaDisponibles = new List<int>();
-
-        for (int i = 0; i < line.palabras.Length; i++)
-            capsulaDisponibles.Add(i);
-
-        // Mezclar para que las correctas no salgan siempre primero.
-        for (int i = capsulaDisponibles.Count - 1; i > 0; i--)
+        for (int i = 0; i < palabrasBotones.Length; i++)
         {
-            int j = Random.Range(0, i + 1);
-            int tmp = capsulaDisponibles[i];
-            capsulaDisponibles[i] = capsulaDisponibles[j];
-            capsulaDisponibles[j] = tmp;
+            bool hayPalabra = i < line.palabras.Length;
+            palabrasBotones[i].gameObject.SetActive(hayPalabra);
+
+            if (hayPalabra)
+                palabrasBotones[i].GetComponentInChildren<TMP_Text>().text = line.palabras[i].texto;
         }
 
-        MostrarRondaCapsula();
-    }
-
-    private void MostrarRondaCapsula()
-    {
-        esperandoReaccion = false;
         OcultarPersonajes();
-
-        if (speakerName != null)
-            speakerName.text = NombreDe(capsulaLinea);
-
-        if (dialogueText != null)
-            dialogueText.text =
-                ReemplazarVariables(capsulaLinea.texto) +
-                "\n(" + (capsulaRonda + 1) + " de " + capsulaPick + ")";
-
-        if (continueButton != null)
-            continueButton.gameObject.SetActive(false);
-
-        if (choicesPanel != null)
-            choicesPanel.SetActive(true);
-
-        string[] textos = new string[capsulaDisponibles.Count];
-
-        for (int i = 0; i < textos.Length; i++)
-            textos[i] = capsulaLinea.palabras[capsulaDisponibles[i]].texto;
-
-        MostrarBotones(textos);
-    }
-
-    private void ElegirPalabra(int boton)
-    {
-        if (boton < 0 || boton >= capsulaDisponibles.Count)
-            return;
-
-        int indice = capsulaDisponibles[boton];
-        Cap2Palabra palabra = capsulaLinea.palabras[indice];
-
-        capsulaDisponibles.RemoveAt(boton);
-        capsulaRonda++;
-
-        if (palabra.correcta)
-            GameState.Sumar(ref GameState.PREP, 1);
-        else
-            GameState.Sumar(ref GameState.RIESGO, 1);
-
-        switch (palabra.leGustaA)
-        {
-            case Cap2Personaje.Sebas:
-                SumarConfianza(ref GameState.cSebas, 1);
-                break;
-
-            case Cap2Personaje.Camila:
-                SumarConfianza(ref GameState.cCamila, 1);
-                break;
-
-            case Cap2Personaje.Chela:
-                SumarConfianza(ref GameState.cChela, 1);
-                break;
-        }
-
-        GameSaveSystem.SaveGameState();
-
-        Debug.Log(
-            $"Cápsula: {palabra.texto} | PREP={GameState.PREP}, RIESGO={GameState.RIESGO}, " +
-            $"cSebas={GameState.cSebas}, cCamila={GameState.cCamila}, cChela={GameState.cChela}"
-        );
-
-        if (!string.IsNullOrWhiteSpace(palabra.reaccion))
-        {
-            MostrarReaccion(palabra);
-            return;
-        }
-
-        AvanzarCapsula();
-    }
-
-    private void MostrarReaccion(Cap2Palabra palabra)
-    {
-        esperandoReaccion = true;
-        OcultarPersonajes();
-
-        if (speakerName != null)
-            speakerName.text = NombreDePersonaje(palabra.leGustaA);
-
-        if (dialogueText != null)
-            dialogueText.text = ReemplazarVariables(palabra.reaccion);
 
         if (choicesPanel != null)
             choicesPanel.SetActive(false);
 
         if (continueButton != null)
-            continueButton.gameObject.SetActive(true);
+            continueButton.gameObject.SetActive(false);
+
+        capsulaPanel.SetActive(true);
+        ActualizarCapsula();
     }
 
-    private void AvanzarCapsula()
+private void PrepararPanelCapsula()
     {
-        esperandoReaccion = false;
+        if (capsulaPanel != null)
+            capsulaPanel.SetActive(false);
 
-        if (capsulaRonda >= capsulaPick || capsulaDisponibles.Count == 0)
+        if (palabrasBotones != null)
         {
-            string siguiente = capsulaLinea.siguienteLinea;
-            capsulaLinea = null;
-            ShowLine(siguiente);
-            return;
+            for (int i = 0; i < palabrasBotones.Length; i++)
+            {
+                int indice = i;
+                palabrasBotones[i].onClick.AddListener(() => AlternarPalabra(indice));
+            }
         }
 
-        MostrarRondaCapsula();
+        if (confirmarCapsula != null)
+            confirmarCapsula.onClick.AddListener(ConfirmarCapsula);
     }
+
+    // Elegir o quitar una palabra, hasta el máximo permitido.
+    private void AlternarPalabra(int i)
+    {
+        if (capsulaLinea == null)
+            return;
+
+        if (capsulaElegidas[i])
+            capsulaElegidas[i] = false;
+        else if (CantidadElegidas() < capsulaPick)
+            capsulaElegidas[i] = true;
+
+        ActualizarCapsula();
+    }
+
+    private int CantidadElegidas()
+    {
+        int total = 0;
+
+        foreach (bool elegida in capsulaElegidas)
+        {
+            if (elegida)
+                total++;
+        }
+
+        return total;
+    }
+
+    private void ActualizarCapsula()
+    {
+        for (int i = 0; i < palabrasBotones.Length; i++)
+            palabrasBotones[i].image.color = capsulaElegidas[i] ? colorSeleccion : Color.white;
+
+        int elegidas = CantidadElegidas();
+
+        if (contadorCapsula != null)
+            contadorCapsula.text = elegidas + "/" + capsulaPick + " seleccionadas";
+
+        if (confirmarCapsula != null)
+            confirmarCapsula.interactable = elegidas == capsulaPick;
+    }
+
+private void ConfirmarCapsula()
+    {
+        if (capsulaLinea == null || CantidadElegidas() != capsulaPick)
+            return;
+
+        for (int i = 0; i < capsulaElegidas.Length; i++)
+        {
+            if (!capsulaElegidas[i])
+                continue;
+
+            Cap2Palabra palabra = capsulaLinea.palabras[i];
+
+            if (palabra.correcta)
+                GameState.Sumar(ref GameState.PREP, 1);
+            else
+                GameState.Sumar(ref GameState.RIESGO, 1);
+
+            switch (palabra.leGustaA)
+            {
+                case Cap2Personaje.Sebas:
+                    SumarConfianza(ref GameState.cSebas, 1);
+                    break;
+
+                case Cap2Personaje.Camila:
+                    SumarConfianza(ref GameState.cCamila, 1);
+                    break;
+
+                case Cap2Personaje.Chela:
+                    SumarConfianza(ref GameState.cChela, 1);
+                    break;
+            }
+        }
+
+        GameSaveSystem.SaveGameState();
+        capsulaPanel.SetActive(false);
+
+        string siguiente = capsulaLinea.siguienteLinea;
+        capsulaLinea = null;
+        ShowLine(siguiente);
+    }
+
+
+
+
 
     // CONDICIONES Y TEXTOS
 
