@@ -9,11 +9,23 @@ EditorBuildSettings:
     path: Assets/Scenes/TextoPruebas.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/03_Sequia.unity
+    guid: ed82978308a02ff479c60c5842dab066
+  - enabled: 1
+    path: Assets/Scenes/02_Prologo.unity
+    guid: e1b746e196062984395cebcf3686bd80
+  - enabled: 1
+    path: Assets/Scenes/04_Incendio.unity
+    guid: a1f9093164aa4794592b164db93879fb
+  - enabled: 1
     path: Assets/Scenes/05_Lluvias.unity
     guid: e907dfcaad2fff94982f9718e2d0d452
   - enabled: 1
-    path: Assets/Scenes/03_Sequia.unity
-    guid: ed82978308a02ff479c60c5842dab066
+    path: Assets/Scenes/Avance 1.unity
+    guid: 8ec33f8cbd6e41946abfd5746f8ae469
+  - enabled: 1
+    path: Assets/Scenes/Inicio.unity
+    guid: ff1d77e1f1536b445ab34b05d0f43107
   - enabled: 1
     path: Assets/Scenes/01_MapaCali.unity
     guid: 7bb952e5883c5f44f9eb80c2b55908c9

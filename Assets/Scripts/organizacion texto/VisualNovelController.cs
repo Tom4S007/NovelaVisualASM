@@ -45,7 +45,7 @@ public class VisualNovelController : MonoBehaviour
     [SerializeField] private string nombreEscenaMapa = "01_MapaCali";
     [SerializeField]
     private string mensajeFinal =
-        "La historia continúa en Cali. Vamos al mapa para explorar los capítulos y descubrir qué sucede en cada lugar.";
+        "La historia continï¿½a en Cali. Vamos al mapa para explorar los capï¿½tulos y descubrir quï¿½ sucede en cada lugar.";
     [SerializeField] private string textoBotonMapa = "IR AL MAPA";
 
     private Dictionary<string, DialogueLine> lineMap;
@@ -64,7 +64,7 @@ public class VisualNovelController : MonoBehaviour
                 if (lineMap.ContainsKey(line.id))
                 {
                     Debug.LogError(
-                        "ID de diálogo duplicado: " + line.id);
+                        "ID de diï¿½logo duplicado: " + line.id);
                     continue;
                 }
 
@@ -98,7 +98,7 @@ public class VisualNovelController : MonoBehaviour
 
     private void ShowLine(string id)
     {
-        // Si no hay otra línea, mostrar la invitación a ir al mapa.
+        // Si no hay otra lï¿½nea, mostrar la invitaciï¿½n a ir al mapa.
         if (string.IsNullOrWhiteSpace(id))
         {
             MostrarFinalEscena();
@@ -107,11 +107,11 @@ public class VisualNovelController : MonoBehaviour
 
         if (!lineMap.TryGetValue(id, out currentLine))
         {
-            Debug.LogError("No existe la línea: " + id);
+            Debug.LogError("No existe la lï¿½nea: " + id);
             return;
         }
 
-        // Las líneas router son invisibles y solo evalúan condiciones.
+        // Las lï¿½neas router son invisibles y solo evalï¿½an condiciones.
         if (currentLine.isRouter)
         {
             string destino = EvaluarCondicion(currentLine)
@@ -221,10 +221,10 @@ public class VisualNovelController : MonoBehaviour
                 return "Camila";
 
             case CharacterId.Chela:
-                return "Doña Chela (teléfono)";
+                return "Doï¿½a Chela (telï¿½fono)";
 
             case CharacterId.DonHernan:
-                return "Don Hernán";
+                return "Don Hernï¿½n";
 
             case CharacterId.Fuente7:
                 return "Fuente 7";
@@ -291,7 +291,7 @@ public class VisualNovelController : MonoBehaviour
 
     private void ContinueDialogue()
     {
-        // El botón final ahora lleva al mapa.
+        // El botï¿½n final ahora lleva al mapa.
         if (mostrandoFinal)
         {
             IrAlMapa();
@@ -320,7 +320,7 @@ public class VisualNovelController : MonoBehaviour
         {
             Debug.LogError(
                 "No se puede cargar la escena '" + escenaDestino +
-                "'. Comprueba su nombre y que esté incluida en Build Profiles."
+                "'. Comprueba su nombre y que estï¿½ incluida en Build Profiles."
             );
         }
     }
@@ -331,7 +331,7 @@ public class VisualNovelController : MonoBehaviour
             currentLine.choices.Length < 2)
         {
             Debug.LogError(
-                "La decisión necesita al menos dos opciones.");
+                "La decisiï¿½n necesita al menos dos opciones.");
 
             if (choicesPanel != null)
                 choicesPanel.SetActive(false);
@@ -397,11 +397,11 @@ public class VisualNovelController : MonoBehaviour
         if (choice.setArriesgo)
             GameState.arriesgo = true;
 
-        // Persistir los indicadores después de tomar la decisión.
+        // Persistir los indicadores despuï¿½s de tomar la decisiï¿½n.
         GameSaveSystem.SaveGameState();
 
         Debug.Log(
-            $"Elección: {choice.text} | " +
+            $"Elecciï¿½n: {choice.text} | " +
             $"PREP={GameState.PREP}, " +
             $"INFO={GameState.INFO}, " +
             $"CONF={GameState.CONF}, " +
