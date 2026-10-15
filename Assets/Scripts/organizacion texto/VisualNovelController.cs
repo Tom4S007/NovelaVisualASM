@@ -190,7 +190,11 @@ public class VisualNovelController : MonoBehaviour
             );
 
             return;
+
+            
         }
+
+        
 
 
         // -----------------------------------------
@@ -206,8 +210,9 @@ public class VisualNovelController : MonoBehaviour
                 ? currentLine.nextLineIfTrue
                 : currentLine.nextLineId;
 
-            ShowLine(destino);
+            
 
+            ShowLine(destino);
             return;
         }
 

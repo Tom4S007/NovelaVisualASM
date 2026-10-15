@@ -2047,6 +2047,376 @@ MonoBehaviour:
     character: 1
     text: "Hoy cerramos transmisi\xF3n, pero la se\xF1al sigue."
     expression: {fileID: 0}
+    nextLineId: cr_1
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_intro
+    character: 0
+    text: "Antes de cerrar, repasemos lo que decidi\xF3 Luc\xEDa y c\xF3mo cambi\xF3
+      al barrio."
+    expression: {fileID: 0}
+    nextLineId: c_1r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_1r
+    character: 0
+    text: "Hoy cerramos transmisi\xF3n, pero la se\xF1al sigue."
+    expression: {fileID: 0}
+    nextLineId: c_1b
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 1
+    condition: 9
+    conditionValue: 0
+    nextLineIfTrue: c_1a
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_1a
+    character: 0
+    text: "Le\xEDste el rumor sin verificarlo. Resultado: el rumor creci\xF3 y Do\xF1a
+      Chela lo repiti\xF3 despu\xE9s."
+    expression: {fileID: 0}
+    nextLineId: c_2r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_1b
+    character: 0
+    text: "Verificaste antes de emitir. Resultado: Camila aclar\xF3 y el barrio recibi\xF3
+      informaci\xF3n confiable."
+    expression: {fileID: 0}
+    nextLineId: c_2r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_2r
+    character: 1
+    text: "Hoy cerramos transmisi\xF3n, pero la se\xF1al sigue."
+    expression: {fileID: 0}
+    nextLineId: c_2b
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 1
+    condition: 12
+    conditionValue: 0
+    nextLineIfTrue: c_2a
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_2a
+    character: 0
+    text: 'Organizaste una reserva comunitaria de agua. Resultado: Tras la crecida
+      el barrio tuvo agua segura.'
+    expression: {fileID: 0}
+    nextLineId: c_3r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_2b
+    character: 0
+    text: "Solo le\xEDste los horarios del racionamiento. Resultado: Tras la crecida,
+      falt\xF3 agua limpia."
+    expression: {fileID: 0}
+    nextLineId: c_3r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_3r
+    character: 1
+    text: "Hoy cerramos transmisi\xF3n, pero la se\xF1al sigue."
+    expression: {fileID: 0}
+    nextLineId: c_3b
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 1
+    condition: 3
+    conditionValue: 0
+    nextLineIfTrue: c_3a
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_3a
+    character: 0
+    text: "Escuchaste a Don Hern\xE1n y pediste su libreta. Resultado:  pudiste avisar
+      las se\xF1ales de la ladera a tiempo."
+    expression: {fileID: 0}
+    nextLineId: c_4r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_3b
+    character: 0
+    text: "Seguiste de largo con Don Hern\xE1n. Resultado: las se\xF1ales de la ladera
+      llegaron sin aviso."
+    expression: {fileID: 0}
+    nextLineId: c_4r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_4r
+    character: 1
+    text: "Hoy cerramos transmisi\xF3n, pero la se\xF1al sigue."
+    expression: {fileID: 0}
+    nextLineId: c_4b
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 1
+    condition: 10
+    conditionValue: 0
+    nextLineIfTrue: c_4a
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_4a
+    character: 0
+    text: "Limpiaste el pasto seco del lote. Resultado: el fuego lleg\xF3 m\xE1s
+      lento al borde del barrio."
+    expression: {fileID: 0}
+    nextLineId: c_5r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_4b
+    character: 0
+    text: "Dejaste el pasto seco. Resultado: el fuego encontr\xF3 m\xE1s combustible
+      cerca de las casas."
+    expression: {fileID: 0}
+    nextLineId: c_5r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_5r
+    character: 1
+    text: "Hoy cerramos transmisi\xF3n, pero la se\xF1al sigue."
+    expression: {fileID: 0}
+    nextLineId: c_5b
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 1
+    condition: 2
+    conditionValue: 0
+    nextLineIfTrue: c_5a
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_5a
+    character: 0
+    text: "Dejaste correr el rumor del fuego. Resultado: hubo p\xE1nico y parte del
+      barrio no atendi\xF3 la evacuaci\xF3n."
+    expression: {fileID: 0}
+    nextLineId: c_6r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_5b
+    character: 0
+    text: 'Desmentiste el rumor con datos de Camila. Resultado: el barrio se mantuvo
+      en calma.'
+    expression: {fileID: 0}
+    nextLineId: c_6r
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_6r
+    character: 1
+    text: "Hoy cerramos transmisi\xF3n, pero la se\xF1al sigue."
+    expression: {fileID: 0}
+    nextLineId: c_6b
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 1
+    condition: 5
+    conditionValue: 0
+    nextLineIfTrue: c_6a
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_6a
+    character: 0
+    text: "Cruzaste la calle inundada. Resultado: la corriente te arrastr\xF3 y pusiste
+      en riesgo a todos."
+    expression: {fileID: 0}
+    nextLineId: f_r1
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: c_6b
+    character: 0
+    text: "Guiaste por radio sin cruzar. Resultado: el barrio subi\xF3 ordenado a
+      las zonas altas."
+    expression: {fileID: 0}
+    nextLineId: f_r1
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: cr_1
+    character: 0
+    text: "Se\xF1al de Ladera. Esta historia es ficticia: los eventos se encadenan
+      por la narrativa, pero en la realidad cada fen\xF3meno depende de m\xFAltiples
+      factores."
+    expression: {fileID: 0}
+    nextLineId: cr_2
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: cr_2
+    character: 0
+    text: "Datos de amenaza de fuentes oficiales (Alcald\xEDa de Cali, Servicio Geol\xF3gico
+      Colombiano, IDEAM). C\xF3digo bajo licencia MIT y recursos propios bajo CC
+      BY 4.0."
+    expression: {fileID: 0}
+    nextLineId: cr_3
+    hasChoices: 0
+    choices: []
+    background: {fileID: 0}
+    onEnterRiesgo: 0
+    isRouter: 0
+    condition: 0
+    conditionValue: 0
+    nextLineIfTrue: 
+    isCapsule: 0
+    capsulePick: 0
+    capsuleWords: []
+  - id: cr_3
+    character: 0
+    text: "Proyecto de Arquitectura de Sistemas Multimedia, Universidad Aut\xF3noma
+      de Occidente."
+    expression: {fileID: 0}
     nextLineId: 
     hasChoices: 0
     choices: []
@@ -2059,7 +2429,7 @@ MonoBehaviour:
     isCapsule: 0
     capsulePick: 0
     capsuleWords: []
-  firstLineId: f_r1
+  firstLineId: c_intro
   background: {fileID: 844197539}
   nextSceneName: Inicio
   capsuleView: {fileID: 708572550}
@@ -2107,10 +2477,12 @@ MonoBehaviour:
   info: 8
   conf: 8
   riesgo: 2
-  tieneLibreta: 0
-  reservaAgua: 0
-  panico: 0
-  arriesgo: 0
+  tieneLibreta: 1
+  reservaAgua: 1
+  panico: 1
+  arriesgo: 1
+  rumorEmitido: 1
+  franjaLimpia: 1
 --- !u!1 &900407568
 GameObject:
   m_ObjectHideFlags: 0
