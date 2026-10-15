@@ -19,7 +19,14 @@ public enum RouterCondition
     Panico,
     TieneLibreta,
     SinReservaAgua,
-    Arriesgo
+    Arriesgo,
+    IRMayorOIgual,
+    IRMenorQue,
+    ArriesgoYRiesgoAlto,
+    RumorEmitido,
+    FranjaLimpia,
+    SubioAApagar,
+    ReservaAgua
 }
 
 

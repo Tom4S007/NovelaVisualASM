@@ -36,8 +36,6 @@ public class Capitulo2VisualNovelController : MonoBehaviour
     [Header("Sonido")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource ambientSource;
-    [SerializeField] private AudioClip glitchSound;
-
     [Header("Al terminar el capítulo")]
     [SerializeField] private string escenaSiguiente = "05_Lluvias";
 
@@ -137,6 +135,10 @@ public class Capitulo2VisualNovelController : MonoBehaviour
             background.sprite = line.fondo;
 
         ReproducirSonidos(line);
+
+        // Cada vez que habla Fuente 7 suena el glitch (desde el SoundManager).
+        if (line.personaje == Cap2Personaje.Fuente7 && SoundManager.Instance != null)
+            SoundManager.Instance.PlayGlitch();
 
         if (line.glitch > 0)
         {
@@ -554,9 +556,6 @@ private void ConfirmarCapsula()
     // Glitch de Fuente 7: el texto tiembla y el nombre parpadea.
     private IEnumerator EfectoGlitch(int nivel)
     {
-        if (glitchSound != null && sfxSource != null)
-            sfxSource.PlayOneShot(glitchSound);
-
         RectTransform caja =
             dialogueText != null ? dialogueText.rectTransform : null;
 

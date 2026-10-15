@@ -13,6 +13,8 @@ public class Cap3TestPreset : MonoBehaviour
     public bool reservaAgua;
     public bool panico;
     public bool arriesgo;
+    public bool rumorEmitido;
+    public bool franjaLimpia;
 
     private void Awake()
     {
@@ -27,5 +29,7 @@ public class Cap3TestPreset : MonoBehaviour
         GameState.reservaAgua = reservaAgua;
         GameState.panico = panico;
         GameState.arriesgo = arriesgo;
+        GameState.rumorEmitido = rumorEmitido;
+        GameState.franjaLimpia = franjaLimpia;
     }
 }

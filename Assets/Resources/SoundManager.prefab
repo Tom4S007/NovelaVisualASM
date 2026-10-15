@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1888595353731162501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5358454884223298248}
+  - component: {fileID: 1733615679952569739}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5358454884223298248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888595353731162501}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1076.5365, y: 521.2636, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1733615679952569739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888595353731162501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f306215f3d758648b25f3483deeb004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  clickClip: {fileID: 8300000, guid: 1913ba7ee8df0f846a57fd5e993711f2, type: 3}
+  glitchClip: {fileID: 8300000, guid: 5dfb6f662e25e794e92d32aa7e43418e, type: 3}
+  SfxVol: 0.1
+  sceneMusic:
+  - sceneName: Inicio
+    clip: {fileID: 8300000, guid: d9812ab15f263f54b8e65f8d13f95023, type: 3}
+    volume: 0.1
+    silencio: 0
+  - sceneName: 02_Prologo
+    clip: {fileID: 8300000, guid: 9a886238bf04be0479dc648e8b210e47, type: 3}
+    volume: 0.1
+    silencio: 0
+  - sceneName: 03_Sequia
+    clip: {fileID: 8300000, guid: 48b56c676e5e2954791dbc37488f3a6a, type: 3}
+    volume: 0.1
+    silencio: 0
+  - sceneName: 04_Incendio
+    clip: {fileID: 8300000, guid: 6b13a07af5f8edc4ca8b595cac14c5e4, type: 3}
+    volume: 0.1
+    silencio: 0
+  - sceneName: 05_Lluvias
+    clip: {fileID: 8300000, guid: 570acae2848f6be42a7ca6515c2b518b, type: 3}
+    volume: 0.1
+    silencio: 0
+  musicVolume: 0.5
+  sceneFade: 1

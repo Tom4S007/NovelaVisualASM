@@ -44,7 +44,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
     [SerializeField] private GameObject fondoLoteSeco;
     [SerializeField] private GameObject fondoCasaDonHernan;
 
-    [Header("Imágenes de personajes")]
+    [Header("Imï¿½genes de personajes")]
     [SerializeField] private Image characterLeft;
     [SerializeField] private Image characterRight;
 
@@ -55,16 +55,16 @@ public class Capitulo1VisualNovelController : MonoBehaviour
     [SerializeField] private CharacterVisuals chela;
     [SerializeField] private CharacterVisuals donHernan;
 
-    [Header("Botón de entrada")]
+    [Header("Botï¿½n de entrada")]
     [SerializeField] private Button botonEntrarRadio;
 
-    [Header("Panel de diálogo")]
+    [Header("Panel de diï¿½logo")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text speakerName;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Button continueButton;
 
-    [Header("Botón de consulta del mapa")]
+    [Header("Botï¿½n de consulta del mapa")]
     [SerializeField] private Button consultarMapaButton;
 
     [Header("Opciones narrativas")]
@@ -73,7 +73,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
     [SerializeField] private Button choiceB;
     [SerializeField] private Button choiceC;
 
-    [Header("Distribución de opciones")]
+    [Header("Distribuciï¿½n de opciones")]
     [SerializeField] private float separacionDosOpciones = 300f;
     [SerializeField] private float desplazamientoVerticalOpciones = 0f;
 
@@ -81,7 +81,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
     private Vector2 posicionOriginalB;
     private Vector2 posicionOriginalC;
 
-    [Header("Cápsula radial C1")]
+    [Header("Cï¿½psula radial C1")]
     [SerializeField] private GameObject capsulaPanel;
     [SerializeField] private TMP_Text tituloCapsula;
     [SerializeField] private TMP_Text instruccionesCapsula;
@@ -94,11 +94,11 @@ public class Capitulo1VisualNovelController : MonoBehaviour
     [SerializeField] private Button palabraAcaparar;
     [SerializeField] private Button palabraElSol;
 
-    [Header("Botones de la cápsula")]
+    [Header("Botones de la cï¿½psula")]
     [SerializeField] private Button confirmarCapsula;
     [SerializeField] private Button cerrarCapsula;
 
-    [Header("Apariencia de selección")]
+    [Header("Apariencia de selecciï¿½n")]
     [SerializeField]
     private Color colorPalabraSeleccionada =
         new Color(1f, 0.82f, 0.45f, 1f);
@@ -141,7 +141,8 @@ public class Capitulo1VisualNovelController : MonoBehaviour
 
         IntroduccionCapsula,
         SeleccionCapsula,
-        FinCapsula
+        FinCapsula,
+        FinCapitulo
     }
 
     private StoryStep currentStep;
@@ -253,7 +254,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             return;
         }
 
-        // Mostrar el río y el texto inicial juntos.
+        // Mostrar el rï¿½o y el texto inicial juntos.
         SetActive(fondoRio, true);
         SetActive(fondoTextoRio, true);
         SetActive(fondoRadioLadera, false);
@@ -303,7 +304,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
         PlayerPrefs.Save();
         GameSaveSystem.SaveGameState();
 
-        Debug.Log("Nueva ejecución: progreso del capítulo 1 reiniciado.");
+        Debug.Log("Nueva ejecuciï¿½n: progreso del capï¿½tulo 1 reiniciado.");
     }
 
     private void EntrarAlEstudio()
@@ -322,9 +323,9 @@ public class Capitulo1VisualNovelController : MonoBehaviour
 
         ShowSpeaker(
             "Narrador", null, Emotion.Normal,
-            "La cabina de Radio Ladera está llena de notas, mapas y mensajes de los habitantes. " +
-            "Lucía se prepara para hablar sobre la disminución del agua. " +
-            "Antes de salir al aire, quiere escuchar a quienes conocen la situación."
+            "La cabina de Radio Ladera estï¿½ llena de notas, mapas y mensajes de los habitantes. " +
+            "Lucï¿½a se prepara para hablar sobre la disminuciï¿½n del agua. " +
+            "Antes de salir al aire, quiere escuchar a quienes conocen la situaciï¿½n."
         );
 
         currentStep = StoryStep.ContextoCabina;
@@ -345,14 +346,14 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             case StoryStep.ExplicacionElNino1:
                 MostrarExplicacion(
                     StoryStep.ExplicacionElNino2,
-                    "Ese calentamiento modifica la circulación atmosférica y puede alterar los patrones de lluvia en diferentes regiones del mundo."
+                    "Ese calentamiento modifica la circulaciï¿½n atmosfï¿½rica y puede alterar los patrones de lluvia en diferentes regiones del mundo."
                 );
                 break;
 
             case StoryStep.ExplicacionElNino2:
                 MostrarExplicacion(
                     StoryStep.ExplicacionElNino3,
-                    "En Colombia, El Niño puede favorecer menos lluvias y temperaturas más altas, aunque sus efectos varían según la región."
+                    "En Colombia, El Niï¿½o puede favorecer menos lluvias y temperaturas mï¿½s altas, aunque sus efectos varï¿½an segï¿½n la regiï¿½n."
                 );
                 break;
 
@@ -366,14 +367,14 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             case StoryStep.ExplicacionSequia1:
                 MostrarExplicacion(
                     StoryStep.ExplicacionSequia2,
-                    "Si la falta de lluvia se prolonga, puede producirse una sequía que afecte ríos, cultivos, vegetación y abastecimiento."
+                    "Si la falta de lluvia se prolonga, puede producirse una sequï¿½a que afecte rï¿½os, cultivos, vegetaciï¿½n y abastecimiento."
                 );
                 break;
 
             case StoryStep.ExplicacionSequia2:
                 MostrarExplicacion(
                     StoryStep.ExplicacionSequia3,
-                    "Por eso debemos consultar los datos de Siloé y compartir información confiable antes de sacar conclusiones sobre la sequía."
+                    "Por eso debemos consultar los datos de Siloï¿½ y compartir informaciï¿½n confiable antes de sacar conclusiones sobre la sequï¿½a."
                 );
                 break;
 
@@ -432,6 +433,10 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             case StoryStep.FinCapsula:
                 MostrarCierreCapitulo1();
                 break;
+
+            case StoryStep.FinCapitulo:
+                VolverAlMapaDeNiveles();
+                break;
         }
     }
 
@@ -443,7 +448,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             speakerName.text = "Radio Ladera";
 
         if (dialogueText != null)
-            dialogueText.text = "¿Con quién quieres hablar antes de salir al aire?";
+            dialogueText.text = "ï¿½Con quiï¿½n quieres hablar antes de salir al aire?";
 
         SetActive(continueButton != null
             ? continueButton.gameObject : null, false);
@@ -503,26 +508,26 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             case "Sebas":
                 MostrarSoloFondo(fondoRadioLadera);
                 ShowSpeaker("Sebas", sebas, Emotion.Pensativo,
-                    "La gente está preocupada por el agua. He escuchado varias versiones sobre lo que está pasando.");
+                    "La gente estï¿½ preocupada por el agua. He escuchado varias versiones sobre lo que estï¿½ pasando.");
                 break;
 
             case "Camila":
                 MostrarSoloFondo(fondoRadioLadera);
                 ShowSpeaker("Camila", camila, Emotion.Pensativo,
-                    "Antes de compartir una alerta, tenemos que revisar qué información está confirmada y qué es un rumor.");
+                    "Antes de compartir una alerta, tenemos que revisar quï¿½ informaciï¿½n estï¿½ confirmada y quï¿½ es un rumor.");
                 break;
 
             case "Chela":
                 MostrarSoloFondo(fondoTiendaChela);
-                ShowSpeaker("Doña Chela", chela, Emotion.Pensativo,
-                    "Lucía, mija, la gente está preocupada por el agua. Necesitamos información clara para el barrio.");
+                ShowSpeaker("Doï¿½a Chela", chela, Emotion.Pensativo,
+                    "Lucï¿½a, mija, la gente estï¿½ preocupada por el agua. Necesitamos informaciï¿½n clara para el barrio.");
                 break;
         }
 
         currentStep = StoryStep.DialogoPersonal;
     }
 
-    // EXPLICACIÓN DE EL NIÑO Y LA SEQUÍA
+    // EXPLICACIï¿½N DE EL NIï¿½O Y LA SEQUï¿½A
 
     private void MostrarTareaMapa()
     {
@@ -530,7 +535,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
 
         ShowSpeaker(
             "Camila", camila, Emotion.Pensativo,
-            "Hay algo importante que debemos entender: El Niño es un fenómeno climático relacionado con el calentamiento del océano Pacífico."
+            "Hay algo importante que debemos entender: El Niï¿½o es un fenï¿½meno climï¿½tico relacionado con el calentamiento del ocï¿½ano Pacï¿½fico."
         );
 
         SetActive(consultarMapaButton != null
@@ -557,7 +562,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
     {
         ShowSpeaker(
             "Camila", camila, Emotion.Pensativo,
-            "Ahora revisemos qué está pasando específicamente en Siloé antes de compartir información con el barrio."
+            "Ahora revisemos quï¿½ estï¿½ pasando especï¿½ficamente en Siloï¿½ antes de compartir informaciï¿½n con el barrio."
         );
 
         SetActive(continueButton != null
@@ -581,7 +586,22 @@ public class Capitulo1VisualNovelController : MonoBehaviour
         SceneManager.LoadScene("01_MapaCali");
     }
 
-    // D1: ORGANIZACIÓN DEL AGUA
+// Al terminar el capitulo: vuelve al mapa como menu de seleccion de nivel.
+    // MAP_ENTRY_KEY en 0 para que el mapa NO muestre el boton de volver al capitulo.
+    private void VolverAlMapaDeNiveles()
+    {
+        if (currentStep != StoryStep.FinCapitulo)
+            return;
+
+        PlayerPrefs.SetInt(MAP_ENTRY_KEY, 0);
+        PlayerPrefs.SetInt(MAP_RETURN_KEY, 0);
+        GuardarEstado();
+
+        SceneManager.LoadScene("01_MapaCali");
+    }
+
+
+    // D1: ORGANIZACIï¿½N DEL AGUA
 
     private void MostrarDecisionD1()
     {
@@ -592,10 +612,10 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             ? consultarMapaButton.gameObject : null, false);
 
         ShowSpeaker(
-            "Lucía", lucia, Emotion.Pensativo,
+            "Lucï¿½a", lucia, Emotion.Pensativo,
             "La falta prolongada de lluvia puede complicar el abastecimiento. " +
-            "Debemos organizarnos y consultar información confiable. " +
-            "¿Qué estrategia proponemos?"
+            "Debemos organizarnos y consultar informaciï¿½n confiable. " +
+            "ï¿½Quï¿½ estrategia proponemos?"
         );
 
         MostrarSoloBotonContinuar();
@@ -624,7 +644,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             GameState.reservaAgua = true;
             PlayerPrefs.SetInt(D1_KEY, 1);
 
-            ShowSpeaker("Lucía", lucia, Emotion.Pensativo,
+            ShowSpeaker("Lucï¿½a", lucia, Emotion.Pensativo,
                 "Organizaremos una reserva comunitaria y turnos para distribuir el agua.");
         }
         else
@@ -632,7 +652,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             GameState.Sumar(ref GameState.INFO, 1);
             PlayerPrefs.SetInt(D1_KEY, 2);
 
-            ShowSpeaker("Lucía", lucia, Emotion.Pensativo,
+            ShowSpeaker("Lucï¿½a", lucia, Emotion.Pensativo,
                 "Primero consultaremos los horarios de abastecimiento para orientar a la comunidad.");
         }
 
@@ -641,7 +661,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
         currentStep = StoryStep.FinDecisionD1;
     }
 
-    // D2: DON HERNÁN
+    // D2: DON HERNï¿½N
 
     private void MostrarEncuentroDonHernan()
     {
@@ -649,7 +669,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
 
         ShowSpeaker(
             "Narrador", null, Emotion.Normal,
-            "Después de organizar la información sobre la sequía, Lucía visita a Don Hernán, quien lleva años observando los cambios del entorno."
+            "Despuï¿½s de organizar la informaciï¿½n sobre la sequï¿½a, Lucï¿½a visita a Don Hernï¿½n, quien lleva aï¿½os observando los cambios del entorno."
         );
 
         MostrarSoloBotonContinuar();
@@ -661,8 +681,8 @@ public class Capitulo1VisualNovelController : MonoBehaviour
         MostrarSoloFondo(fondoCasaDonHernan);
 
         ShowSpeaker(
-            "Don Hernán", donHernan, Emotion.Pensativo,
-            "He vivido aquí durante muchos años. Tengo una libreta donde anoto los cambios que observo y puedo compartir mis recuerdos."
+            "Don Hernï¿½n", donHernan, Emotion.Pensativo,
+            "He vivido aquï¿½ durante muchos aï¿½os. Tengo una libreta donde anoto los cambios que observo y puedo compartir mis recuerdos."
         );
 
         MostrarSoloBotonContinuar();
@@ -674,10 +694,10 @@ public class Capitulo1VisualNovelController : MonoBehaviour
         MostrarSoloFondo(fondoCasaDonHernan);
 
         ShowSpeaker(
-            "Lucía", lucia, Emotion.Pensativo,
+            "Lucï¿½a", lucia, Emotion.Pensativo,
             "Los registros escritos ayudan a recordar fechas y cambios. " +
             "Una entrevista aporta experiencias personales. " +
-            "Debo elegir cómo recopilar la información de Don Hernán."
+            "Debo elegir cï¿½mo recopilar la informaciï¿½n de Don Hernï¿½n."
         );
 
         MostrarSoloBotonContinuar();
@@ -688,7 +708,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
     {
         MostrarDosOpciones(
             "Revisar su libreta de observaciones",
-            "Hacer una entrevista rápida"
+            "Hacer una entrevista rï¿½pida"
         );
 
         currentStep = StoryStep.DecisionD2;
@@ -706,16 +726,16 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             GameState.tieneLibreta = true;
             PlayerPrefs.SetInt(D2_KEY, 1);
 
-            ShowSpeaker("Don Hernán", donHernan, Emotion.Sonriente,
-                "Claro, Lucía. Puedes revisar mis anotaciones; allí he registrado los cambios que he observado con el tiempo.");
+            ShowSpeaker("Don Hernï¿½n", donHernan, Emotion.Sonriente,
+                "Claro, Lucï¿½a. Puedes revisar mis anotaciones; allï¿½ he registrado los cambios que he observado con el tiempo.");
         }
         else
         {
             GameState.Sumar(ref GameState.INFO, 1);
             PlayerPrefs.SetInt(D2_KEY, 2);
 
-            ShowSpeaker("Don Hernán", donHernan, Emotion.Pensativo,
-                "Te cuento lo que recuerdo, aunque en la libreta tengo anotaciones más detalladas.");
+            ShowSpeaker("Don Hernï¿½n", donHernan, Emotion.Pensativo,
+                "Te cuento lo que recuerdo, aunque en la libreta tengo anotaciones mï¿½s detalladas.");
         }
 
         GuardarEstado();
@@ -731,7 +751,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
 
         ShowSpeaker(
             "Narrador", null, Emotion.Normal,
-            "Al salir de la casa, Lucía observa el lote seco. El pasto está quebradizo y hay basura acumulada entre la vegetación."
+            "Al salir de la casa, Lucï¿½a observa el lote seco. El pasto estï¿½ quebradizo y hay basura acumulada entre la vegetaciï¿½n."
         );
 
         MostrarSoloBotonContinuar();
@@ -744,7 +764,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
 
         ShowSpeaker(
             "Sebas", sebas, Emotion.Pensativo,
-            "Mira cómo está el terreno. Cuando la vegetación pierde humedad, puede arder con más facilidad."
+            "Mira cï¿½mo estï¿½ el terreno. Cuando la vegetaciï¿½n pierde humedad, puede arder con mï¿½s facilidad."
         );
 
         MostrarSoloBotonContinuar();
@@ -755,7 +775,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
     {
         ShowSpeaker(
             "Camila", camila, Emotion.Pensativo,
-            "Una colilla, una fogata o quemar residuos podría iniciar un incendio. Podemos reducir el riesgo evitando quemas y limpiando con cuidado."
+            "Una colilla, una fogata o quemar residuos podrï¿½a iniciar un incendio. Podemos reducir el riesgo evitando quemas y limpiando con cuidado."
         );
 
         MostrarSoloBotonContinuar();
@@ -767,10 +787,10 @@ public class Capitulo1VisualNovelController : MonoBehaviour
         MostrarSoloFondo(fondoLoteSeco);
 
         ShowSpeaker(
-            "Lucía", lucia, Emotion.Pensativo,
+            "Lucï¿½a", lucia, Emotion.Pensativo,
             "La comunidad puede retirar los residuos sin quemarlos. " +
-            "Si no actuamos, el terreno seguirá expuesto al riesgo de incendio. " +
-            "Debemos decidir qué hacer con el lote."
+            "Si no actuamos, el terreno seguirï¿½ expuesto al riesgo de incendio. " +
+            "Debemos decidir quï¿½ hacer con el lote."
         );
 
         MostrarSoloBotonContinuar();
@@ -781,7 +801,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
     {
         MostrarDosOpciones(
             "Organizar una jornada de limpieza y pedir que no quemen",
-            "Dejar el lote como está"
+            "Dejar el lote como estï¿½"
         );
 
         currentStep = StoryStep.DecisionD3;
@@ -800,8 +820,8 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             PlayerPrefs.SetInt(D3_KEY, 1);
 
             ShowSpeaker(
-                "Lucía", lucia, Emotion.Pensativo,
-                "Organizaremos una jornada de limpieza y pediremos que nadie queme residuos ni encienda fogatas cerca de la vegetación seca."
+                "Lucï¿½a", lucia, Emotion.Pensativo,
+                "Organizaremos una jornada de limpieza y pediremos que nadie queme residuos ni encienda fogatas cerca de la vegetaciï¿½n seca."
             );
         }
         else
@@ -810,8 +830,8 @@ public class Capitulo1VisualNovelController : MonoBehaviour
             PlayerPrefs.SetInt(D3_KEY, 2);
 
             ShowSpeaker(
-                "Lucía", lucia, Emotion.Pensativo,
-                "Por ahora dejaremos el lote como está. La vegetación seca y la basura seguirán siendo factores de riesgo."
+                "Lucï¿½a", lucia, Emotion.Pensativo,
+                "Por ahora dejaremos el lote como estï¿½. La vegetaciï¿½n seca y la basura seguirï¿½n siendo factores de riesgo."
             );
         }
 
@@ -820,7 +840,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
         currentStep = StoryStep.FinDecisionD3;
     }
 
-    // C1: CÁPSULA RADIAL
+    // C1: Cï¿½PSULA RADIAL
 
     private void MostrarIntroduccionCapsula()
     {
@@ -830,7 +850,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
         {
             ShowSpeaker(
                 "Narrador", null, Emotion.Normal,
-                "La cápsula radial sobre la sequía ya fue completada."
+                "La cï¿½psula radial sobre la sequï¿½a ya fue completada."
             );
 
             MostrarSoloBotonContinuar();
@@ -840,7 +860,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
 
         ShowSpeaker(
             "Narrador", null, Emotion.Normal,
-            "Antes de cerrar la transmisión, Lucía debe preparar recomendaciones para ahorrar agua, revisar fugas y consultar información confiable."
+            "Antes de cerrar la transmisiï¿½n, Lucï¿½a debe preparar recomendaciones para ahorrar agua, revisar fugas y consultar informaciï¿½n confiable."
         );
 
         MostrarSoloBotonContinuar();
@@ -862,7 +882,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
         SetActive(capsulaPanel, true);
 
         if (tituloCapsula != null)
-            tituloCapsula.text = "CÁPSULA RADIAL · SEQUÍA";
+            tituloCapsula.text = "Cï¿½PSULA RADIAL ï¿½ SEQUï¿½A";
 
         if (instruccionesCapsula != null)
             instruccionesCapsula.text =
@@ -991,8 +1011,8 @@ public class Capitulo1VisualNovelController : MonoBehaviour
         MostrarSoloFondo(fondoLoteSeco);
 
         ShowSpeaker(
-            "Lucía", lucia, Emotion.Pensativo,
-            "La cápsula quedó preparada. Debemos cuidar el agua, compartir información confiable y evitar acciones que puedan provocar incendios."
+            "Lucï¿½a", lucia, Emotion.Pensativo,
+            "La cï¿½psula quedï¿½ preparada. Debemos cuidar el agua, compartir informaciï¿½n confiable y evitar acciones que puedan provocar incendios."
         );
 
         MostrarSoloBotonContinuar();
@@ -1009,7 +1029,7 @@ public class Capitulo1VisualNovelController : MonoBehaviour
 
         ShowSpeaker(
             "Narrador", null, Emotion.Normal,
-            "La cápsula sigue pendiente. Cuando quieras, puedes volver a preparar el mensaje radial."
+            "La cï¿½psula sigue pendiente. Cuando quieras, puedes volver a preparar el mensaje radial."
         );
 
         MostrarSoloBotonContinuar();
@@ -1037,14 +1057,15 @@ public class Capitulo1VisualNovelController : MonoBehaviour
 
         ShowSpeaker(
             "Narrador", null, Emotion.Normal,
-            "La transmisión sobre la sequía está lista. Pero en el lote seco queda una señal inquietante: el humo llega primero a quien no mira hacia arriba."
+            "La transmisiï¿½n sobre la sequï¿½a estï¿½ lista. Pero en el lote seco queda una seï¿½al inquietante: el humo llega primero a quien no mira hacia arriba."
         );
 
         MostrarSoloBotonContinuar();
-        Debug.Log("Capítulo 1 completado.");
+        currentStep = StoryStep.FinCapitulo;
+        Debug.Log("Capï¿½tulo 1 completado.");
     }
 
-    // MÉTODOS COMPARTIDOS
+    // Mï¿½TODOS COMPARTIDOS
 
     private void MostrarDosOpciones(string textoA, string textoB)
     {
